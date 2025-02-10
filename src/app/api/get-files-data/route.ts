@@ -12,6 +12,8 @@ const sortFiles = (dataSplited: string[], sortBy: 'asc' | 'desc') => {
   const bSplitted = fileNameB.match(regex);
 
   console.log({ aSplitted, bSplitted })
+
+  if (!aSplitted || !bSplitted) return
   
   for (let i = 0; i < Math.min(aSplitted?.length, bSplitted?.length); i++) {
     const partA = aSplitted[i];
