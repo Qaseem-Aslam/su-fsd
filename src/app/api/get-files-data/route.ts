@@ -13,7 +13,7 @@ const sortFiles = (dataSplited: string[], sortBy: 'asc' | 'desc') => {
 
   console.log({ aSplitted, bSplitted })
 
-  if (!aSplitted || !bSplitted) return
+  if (!aSplitted || !bSplitted) return 0;
   
   for (let i = 0; i < Math.min(aSplitted?.length, bSplitted?.length); i++) {
     const partA = aSplitted[i];
