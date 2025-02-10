@@ -42,7 +42,13 @@ const sortFiles = (dataSplited: string[], sortBy: 'asc' | 'desc') => {
  });
 };
 
-const sortByDate = (data: string[]): string[] => data.sort((a, b) => new Date(a.split(';')[0]) - new Date(b.split(';')[0]))
+const sortByDate = (data: string[]): string[] =>  {
+  return data.sort((a, b) => {
+    const createdAtA = a.split(';')[0];
+    const createdAtB = b.split(';')[0];
+    return new Date(createdAtA).valueOf() - new Date(createdAtB).valueOf();
+  })
+}
 
 const formatFiles = (files: string[]): { createdAt: string, filename: string }[] => {
 
