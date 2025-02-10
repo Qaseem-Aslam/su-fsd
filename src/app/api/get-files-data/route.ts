@@ -65,7 +65,7 @@ export async function GET(request: Request) {
 
   const sortBy = searchParams.get("sortBy");
 
-  const data = await fs.readFile(process.cwd() + '/src/app/api/get-files-data/data.csv', 'utf8');
+  const data = await fs.readFile(process.cwd() + '/app/api/get-files-data/data.csv', 'utf8');
   const dataSplited = data.split('\n');
   switch (sortBy) {
     case "date": 
