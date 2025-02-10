@@ -88,7 +88,7 @@ export async function GET(request: Request) {
       return NextResponse.json(formatFiles(sortFiles(data, 'asc')));
       break;
     default: 
-      return NextResponse.json(dataSplited);
+      return NextResponse.json(data);
   }
 }
 
