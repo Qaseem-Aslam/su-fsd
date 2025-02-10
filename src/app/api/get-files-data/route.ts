@@ -1,6 +1,20 @@
 
 import { NextResponse } from "next/server";
-import { promises as fs } from 'fs';
+
+const data = [
+'2023-06-25 11:00;1cbc.txt',
+'2023-06-25 11:00;1abc.txt',
+'2023-06-25 12:00;abc.txt',
+'2023-06-25 16:00;20-abc.txt',
+'2023-06-25 14:00;0010abc.txt',
+'2023-06-25 15:00;011abc.txt',
+'2023-06-25 20:00;abc010.txt',
+'2023-06-25 17:00;021-abc.txt',
+'2023-06-25 18:00;002-abc.txt',
+'2023-06-25 19:00;cba.txt',
+'2023-06-25 13:00;01abc.txt',
+'2023-06-25 21:00;abc1.txt'
+]
 
 const sortFiles = (dataSplited: string[], sortBy: 'asc' | 'desc') => {
  return dataSplited.sort((a, b) => {
@@ -65,15 +79,13 @@ export async function GET(request: Request) {
 
   const sortBy = searchParams.get("sortBy");
 
-  const data = await fs.readFile(process.cwd() + '/public/data.csv', 'utf8');
-  const dataSplited = data.split('\n');
   switch (sortBy) {
     case "date": 
-      return NextResponse.json(formatFiles(sortByDate(dataSplited)));
+      return NextResponse.json(formatFiles(sortByDate(data)));
     case "filename-desc":
-    return NextResponse.json(formatFiles(sortFiles(dataSplited, 'desc')));
+    return NextResponse.json(formatFiles(sortFiles(data, 'desc')));
     case "filename-asc":
-      return NextResponse.json(formatFiles(sortFiles(dataSplited, 'asc')));
+      return NextResponse.json(formatFiles(sortFiles(data, 'asc')));
       break;
     default: 
       return NextResponse.json(dataSplited);
